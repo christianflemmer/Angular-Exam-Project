@@ -1,0 +1,147 @@
+* {
+  font-family: 'Patrick Hand', cursive;
+  color: #333333;
+  margin: 0; }
+
+.ul-nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  width: 100%;
+  overflow: hidden;
+  top: 0;
+  background-color: #333333;
+  z-index: 999; }
+  .ul-nav li {
+    float: left;
+    margin-left: 10px; }
+    .ul-nav li a {
+      color: white;
+      display: block;
+      padding: 7px 14px;
+      text-align: center; }
+
+#notebook-paper {
+  width: 500px;
+  height: 622px;
+  background: linear-gradient(to bottom, #F8ECC2 29px, #00b0d7 1px);
+  margin: 70px auto;
+  background-size: 100% 30px;
+  position: relative;
+  padding-top: 0;
+  padding-left: 70px;
+  padding-right: 5px;
+  overflow: hidden;
+  border-radius: 5px;
+  -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4), 0px 0px 7px rgba(0, 0, 0, 0.4);
+  -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4), 0px 0px 7px rgba(0, 0, 0, 0.4);
+  -ms-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4), 0px 0px 7px rgba(0, 0, 0, 0.4);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.4), 0px 0px 7px rgba(0, 0, 0, 0.4); }
+  #notebook-paper:before {
+    content: '';
+    display: block;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 60px;
+    height: 100%;
+    width: 1px;
+    background: #db4034; }
+  #notebook-paper h3 {
+    margin: 5px 0 0 0;
+    height: 62px; }
+  #notebook-paper ul {
+    list-style: none;
+    padding-left: 0; }
+    #notebook-paper ul li {
+      margin-bottom: 2px;
+      transition: .3s; }
+    #notebook-paper ul li:hover {
+      opacity: .9; }
+  #notebook-paper p {
+    font-size: 20px;
+    user-select: none; }
+
+#todo-content {
+  display: inline-block; }
+
+#todoInput, #addButton, .listIcons {
+  position: relative;
+  top: -4px;
+  outline: none; }
+
+#editTodo {
+  width: 340px; }
+
+input {
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  width: 90%;
+  margin: 0; }
+
+button {
+  width: 9%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  transition: .5s;
+  color: transparent; }
+
+button:hover {
+  font-size: 1.2em; }
+
+li:hover #addButton {
+  color: black; }
+
+.listIcons {
+  float: right;
+  margin: 0 5px;
+  opacity: 0;
+  transition: 0.4s linear;
+  font-size: 1.3em;
+  cursor: pointer; }
+
+li:hover .listIcons, #addButton {
+  opacity: 1; }
+
+.completed {
+  text-decoration: line-through; }
+
+.editIcon {
+  text-align: center;
+  float: right; }
+  .editIcon i {
+    font-size: 20px; }
+
+.fa-trash:hover {
+  animation: shake 0.92s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px; }
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0); }
+  20%, 80% {
+    transform: translate3d(2px, 0, 0); }
+  30%, 50%, 70% {
+    transform: translate3d(-3px, 0, 0); }
+  40%, 60% {
+    transform: translate3d(3px, 0, 0); } }
+#sticky-logo {
+  height: 220px;
+  width: 220px;
+  position: absolute;
+  top: 70px;
+  right: 82%;
+  transform: rotate(10deg); }
+  @media screen and (max-width: 806px) {
+    #sticky-logo {
+      top: -40px;
+      right: 20%;
+      transform: scale(0.3); } }
+
+/*# sourceMappingURL=style.css.map */

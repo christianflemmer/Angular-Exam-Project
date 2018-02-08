@@ -1,0 +1,44 @@
+<!--svg logo-->
+<img id="sticky-logo" src="src/resource/stickyLogo.svg"/>
+
+<div id="notebook-paper">
+  <h3> MY TODO LIST </h3>
+
+  <div class="list">
+    <ul>
+
+      <!-- Todo Items --> 
+      <li  [formGroup]="oldTodoForm" *ngFor="let oTodo of aListOfTodos">
+        <div id="todo-content">
+          <p *ngIf="oTodo.hideMe == true" (click)="oTodo.done = !oTodo.done;" [ngClass]="{completed: !oTodo.done}" > {{oTodo.todoCML}}</p>
+          <div *ngIf="oTodo.hideMe == false" class="updateInput formGroup" >
+            <input #testupdate id="editTodo" type="text" value={{oTodo.todoCML}} placeholder={{oTodo.todoCML}} formControlName="todo">
+            <div [hidden]="!oldTodoForm.controls.todo.hasError('limitError')"> Only letters allowed! </div>
+            <span class="editIcon" [hidden]="oldTodoForm.controls.todo.hasError('limitError')" (click)="onUpdate(oTodo, testupdate.value)"><i class="fa fa-floppy-o" aria-hidden="true"></i></span>
+            <span class="editIcon" [hidden]="!oldTodoForm.controls.todo.hasError('limitError')"><i class="fa fa-floppy-o" aria-hidden="true"></i></span>
+          </div>
+        </div> 
+        
+        <!-- Icons to the right -->  
+        <span class="listIcons">
+          <i class="fa fa-trash" (click)="onDelete(oTodo)"></i>
+        </span>
+        <span class="listIcons" #editTodo (click)="toggleHide(oTodo)">
+          <i class="fa fa-pencil"></i>
+        </span>
+      </li>
+
+      <!-- Input form -->
+      <li>
+        <form [formGroup]="addTodoForm" (ngSubmit)="onCreate(addTodoForm)">
+          <div class="formGroup" id="input-line">
+            <input id="todoInput" type="text" value=" " formControlName="addTodo" maxlength="35" [(ngModel)]="todoInput">
+            <div [hidden]="!addTodoForm.controls.addTodo.hasError('limitError')"> Only letters allowed! </div>
+            <button [disabled]="addTodoForm.controls.addTodo.hasError('limitError')" type="submit" id="addButton"> Add </button>
+          </div>
+        </form>
+      </li>
+    </ul>
+
+  </div>
+</div>

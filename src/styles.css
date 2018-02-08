@@ -1,0 +1,27 @@
+/* You can add global styles to this file, and also import other style files */
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+html{
+  height: 100%;
+}
+
+
+/*only downloads and sets the image which fits the screen*/
+@media only screen and (max-width: 506px) {
+    body {
+        background: url("resource/table-mobile-506x900.png");
+    }
+}
+@media only screen and (min-width:506px) {
+    body {
+        background: url("resource/table-1600x900.png");
+    }
+}
+
+body{
+  background-size: cover;
+  background-attachment: fixed;
+}

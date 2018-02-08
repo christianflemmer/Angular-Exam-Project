@@ -1,0 +1,226 @@
+// Variables
+$main-color: #333333; // This color is supposedly easier on the eyes and easier to read
+$notebook-line: #db4034;
+
+// Mixins
+@mixin shadow($shadowsize){
+  -webkit-box-shadow:$shadowsize $shadowsize $shadowsize rgba(0,0,0,.4),0px 0px 7px rgba(0,0,0,.4);
+  -moz-box-shadow:$shadowsize $shadowsize $shadowsize rgba(0,0,0,.4),0px 0px 7px rgba(0,0,0,.4);
+  -ms-box-shadow:$shadowsize $shadowsize $shadowsize rgba(0,0,0,.4),0px 0px 7px rgba(0,0,0,.4);
+  box-shadow:$shadowsize $shadowsize $shadowsize rgba(0,0,0,.4),0px 0px 7px rgba(0,0,0,.4);
+}
+
+* {
+  font-family: 'Patrick Hand', cursive;
+  color: $main-color; 
+  margin: 0;
+}
+
+// **********************************
+// ************* NAVBAR *************
+// **********************************
+
+.ul-nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  position: fixed;
+  width: 100%;
+  overflow: hidden;
+  top: 0;
+  background-color: $main-color;
+  z-index: 999;
+
+  li {
+    float:left;
+    margin-left: 10px;
+
+    a {
+      color: white; 
+      display: block;
+      padding: 7px 14px;
+      text-align: center;
+    }
+
+  }
+}
+
+// ******************************************
+// ************* CENTER CONTENT *************
+// ******************************************
+
+// This CSS is heavily inspired from the internet to make the background of the list look like paper
+#notebook-paper {
+  width:500px;
+  height:622px;
+  background: linear-gradient(to bottom, #F8ECC2 29px,#00b0d7 1px);
+  margin: 70px auto;
+  background-size: 100% 30px;
+  position:relative;
+  padding-top:0;
+  padding-left:70px;
+  padding-right:5px;
+  overflow:hidden;
+  border-radius:5px;
+
+  // Drawing shadow using Mixin
+  @include shadow(5px);
+
+    &:before {
+      content:'';
+      display:block;
+      position:absolute;
+      z-index:1;
+      top:0;
+      left:60px;
+      height:100%;
+      width: 1px;
+      background: $notebook-line;
+    }
+
+  h3 {
+    margin: 5px 0 0 0; 
+    height: 62px; // Makes sure that the first todo is center in between lines.
+  }
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+
+    li {
+      margin-bottom: 2px; // Spacing between each todo item
+      transition: .3s;
+    }
+
+    li:hover {
+      opacity: .9;
+    }    
+  }
+
+  p {
+    font-size: 20px;
+    user-select: none;    
+  }
+}
+
+#todo-content{
+    display: inline-block;
+}
+
+#todoInput, #addButton, .listIcons {
+    // Everything here gets pushed a bit up to be centered on the line instead of resting on the bottom
+    position: relative; 
+    top: -4px;
+    outline: none;
+}
+
+#editTodo {
+  width: 340px;
+}
+
+input {
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    width: 90%;
+    margin: 0;
+}
+
+button {
+  width: 9%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  transition: .5s;
+  color: rgba(0,0,0,0);
+}
+
+button:hover {
+    font-size: 1.2em;
+}
+
+// Show add button only on hover li
+li:hover #addButton {
+  color: rgba(0,0,0,1);
+}
+
+// *********************************
+// ************* ICONS *************
+// *********************************
+
+.listIcons {
+  float: right;
+  margin: 0 5px;
+  opacity: 0;
+  transition: 0.4s linear;
+  font-size: 1.3em; 
+  cursor: pointer;
+}
+
+li:hover .listIcons, #addButton {
+  opacity: 1;
+}
+
+.completed {
+  text-decoration: line-through;
+}
+
+.editIcon {
+  text-align: center;
+  float:right;
+  i{
+    font-size: 20px;
+  }
+}
+
+// *************************************
+// ************* ANIMATION *************
+// *************************************
+
+.fa-trash:hover {
+  animation: shake 0.92s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;  
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate3d(-3px, 0, 0);
+  }
+
+  40%, 60% {
+    transform: translate3d(3px, 0, 0);
+  }
+}
+
+// ************************************
+// ************* SVG-LOGO *************
+// ************************************
+
+// En sticky note er ca 7,5 cm2, en kaffe kop er normalt 9cm i diameter
+#sticky-logo{
+  height: 220px;
+  width: 220px;
+
+  position: absolute;
+  top: 70px;
+  right: 82%;
+  transform: rotate(10deg);
+
+  @media screen and (max-width: 806px){
+    top: -40px;
+    right: 20%;
+    transform: scale(0.3);
+  }
+
+}
